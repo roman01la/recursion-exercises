@@ -22,6 +22,9 @@ pre {
   width: 300px;
   border-right: 1px solid #000;
 }
+.side-bar h1 {
+  text-align: center;
+}
 
 .list-item {
   margin: 10px 0;

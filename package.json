@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "watchify src/index.js -o build/bundle.js -dv -p livereactload & serve",
-    "build": "browserify src/index.js -t [ babelify --stage 0 ] | uglifyjs > build/bundle.js"
+    "build": "browserify src/index.js -t [ babelify --stage 0 ] | uglifyjs --screw-ie8 -c=dead_code,evaluate,loops,unused > build/bundle.js"
   },
   "browserify": {
     "transform": [

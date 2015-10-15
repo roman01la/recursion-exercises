@@ -9,6 +9,7 @@ const App = ({ exercises }) => (
 
   <div>
     <aside className="side-bar">
+      <img src='public/images/recur-exercises-logo.svg' />
       <h1>Recursion exercises</h1>
       <ul className='list'>
         <li className='list-item'><a href='#sum'>Sum</a></li>
