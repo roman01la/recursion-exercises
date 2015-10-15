@@ -18,5 +18,5 @@ export function execute(code) {
 
 export function init() {
 
-  worker = new Worker('/public/scripts/worker.js');
+  worker = new Worker('public/scripts/worker.js');
 }
