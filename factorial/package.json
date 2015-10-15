@@ -1,7 +1,0 @@
-{
-  "private": true,
-  "scripts": {
-    "test": "../node_modules/mocha/bin/mocha -r babel/register",
-    "tdd": "../node_modules/mocha/bin/mocha -r babel/register -w"
-  }
-}

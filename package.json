@@ -1,15 +1,37 @@
 {
-  "name": "recursion-exercises",
   "private": true,
-  "description": "Recursion exercises in JavaScript",
   "scripts": {
-    "test": "mocha **/test.js -r babel/register"
+    "dev": "watchify src/index.js -o build/bundle.js -dv -p livereactload & serve",
+    "build": "browserify src/index.js -t [ babelify --stage 0 ] | uglifyjs > build/bundle.js"
   },
-  "author": "Roman Liutikov",
-  "license": "MIT",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "stage": [
+            0
+          ]
+        }
+      ]
+    ]
+  },
   "devDependencies": {
     "babel": "^5.8.23",
+    "babel-plugin-react-transform": "^1.1.1",
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "codemirror": "^5.7.0",
     "deep-equal": "^1.0.1",
-    "mocha": "^2.3.3"
+    "livereactload": "^2.0.1",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-proxy": "^1.1.1",
+    "serve": "^1.4.0",
+    "uglify-js": "^2.5.0",
+    "watchify": "^3.4.0"
+  },
+  "dependencies": {
+    "babel-core": "^5.8.25"
   }
 }
