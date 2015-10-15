@@ -3,6 +3,16 @@ import Codemirror from './codemirror';
 import Test from './test';
 import Description from './description';
 
+function saveCode(id, code) {
+
+  localStorage.setItem(`re-${id}`, code);
+}
+
+function loadCode(id) {
+
+  return localStorage.getItem(`re-${id}`);
+}
+
 const ExerciseItem = React.createClass({
 
   getInitialState() {
@@ -11,7 +21,7 @@ const ExerciseItem = React.createClass({
   },
   _setCode(code) {
 
-    this.setState({ code });
+    this.setState({ code }, () => saveCode(this.props.id, code));
   },
   render() {
 
@@ -19,7 +29,7 @@ const ExerciseItem = React.createClass({
 
       <section className='exercise-item'>
         <Description {...this.props.description} id={this.props.id} />
-        <Codemirror value={this.props.test} onChange={this._setCode} />
+        <Codemirror defaultValue={loadCode(this.props.id) || this.props.test} onChange={this._setCode} />
         <Test test={this.state.code} />
       </section>
     );

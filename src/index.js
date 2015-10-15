@@ -20,6 +20,8 @@ const App = ({ exercises }) => (
         <li className='list-item'><a href='#gcd'>Greatest common divisor</a></li>
         <li className='list-item'><a href='#bs'>Binary search</a></li>
       </ul>
+      <p><small>ES2015+ is supported in the editor with Babel. All of the changes are stored into localStorage.</small></p>
+      <p><small>There's also Node version of the exercises for local testing. Clone the repo from <a href='https://github.com/roman01la/recursion-exercises'>GitHub</a>.</small></p>
     </aside>
     <ExercisesList exercises={exercises} />
   </div>

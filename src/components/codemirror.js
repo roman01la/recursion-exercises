@@ -11,7 +11,7 @@ const Codemirror = React.createClass({
   componentDidMount() {
 
     this.cm = CM(this.refs.input, {
-      value: this.props.value,
+      value: this.props.defaultValue,
       mode: 'javascript',
       theme: 'neo',
       lineNumbers: true,
