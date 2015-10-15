@@ -1,8 +1,12 @@
 {
   "private": true,
   "scripts": {
-    "dev": "watchify src/index.js -o build/bundle.js -dv -p livereactload & serve",
-    "build": "browserify src/index.js -t [ babelify --stage 0 ] | uglifyjs --screw-ie8 -c=dead_code,evaluate,loops,unused > build/bundle.js"
+    "dev": "npm run dev-app & npm run dev-worker & serve",
+    "dev-app": "watchify src/index.js -o build/bundle.js -dv -p livereactload",
+    "dev-worker": "watchify src/worker/worker.js -o public/scripts/worker.js -dv",
+    "build": "npm run build-app && npm run build-worker",
+    "build-app": "browserify src/index.js -t [ babelify --stage 0 ] | uglifyjs --screw-ie8 -c=dead_code,evaluate,loops,unused > build/bundle.js",
+    "build-worker": "browserify src/worker/worker.js -t [ babelify --stage 0 ] | uglifyjs --screw-ie8 -c=dead_code,evaluate,loops,unused > public/scripts/worker.js"
   },
   "browserify": {
     "transform": [
@@ -22,6 +26,7 @@
     "babelify": "^6.3.0",
     "browserify": "^11.2.0",
     "codemirror": "^5.7.0",
+    "deep-equal": "^1.0.1",
     "livereactload": "^2.0.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
