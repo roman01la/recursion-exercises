@@ -5,8 +5,8 @@ import binarySearch from './';
 
 describe('binarySearch(target_num, [num1, num2, ...]])', () => {
 
-  it('should find a number in a sorted sequence of numbers', () => {
+  it('should find position of the number in a sorted sequence of numbers', () => {
 
-    assert.equal(4, binarySearch(4, [6, 4, 0, 11, 3, 7, 9].sort((a, b) => a > b)));
+    assert.equal(2, binarySearch(4, [0, 3, 4, 6, 7, 9, 11]));
   });
 });
