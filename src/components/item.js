@@ -17,7 +17,7 @@ const ExerciseItem = React.createClass({
 
   getInitialState() {
 
-    return { code: this.props.test };
+    return { code: loadCode(this.props.id) || this.props.test };
   },
   _setCode(code) {
 
@@ -29,7 +29,7 @@ const ExerciseItem = React.createClass({
 
       <section className='exercise-item'>
         <Description {...this.props.description} id={this.props.id} />
-        <Codemirror defaultValue={loadCode(this.props.id) || this.props.test} onChange={this._setCode} />
+        <Codemirror defaultValue={this.state.code} onChange={this._setCode} />
         <Test test={this.state.code} />
       </section>
     );
