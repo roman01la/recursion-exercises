@@ -1,19 +1,9 @@
 import React from 'react';
 import ErrorMessage from './error_message';
 import ResultMessage from './result_message';
-import equal from 'deep-equal';
+import { execute } from '../worker';
 
 const initialState = { result: undefined, error: undefined };
-
-function transform(code) {
-
-  return babel.transform(code, { stage: 0 }).code;
-}
-
-function execute(test) {
-
-  return new Promise((resolve) => resolve(eval(transform(test))));
-}
 
 const Test = React.createClass({
 
@@ -33,7 +23,7 @@ const Test = React.createClass({
   _getResult({ result, error }) {
 
     return result !== undefined ? <ResultMessage result={result} /> :
-      (error !== undefined ? <ErrorMessage message={error.message} /> : null);
+      (error !== undefined ? <ErrorMessage message={error} /> : null);
   },
   render() {
 

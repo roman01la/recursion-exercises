@@ -2,8 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import ExercisesList from './components/list';
 import exercises from './config/exercises';
+import { init } from './worker';
 
-window.assert = { equal: require('deep-equal') };
+init();
 
 const App = ({ exercises }) => (
 
