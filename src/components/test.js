@@ -12,7 +12,7 @@ function transform(code) {
 
 function execute(test) {
 
-  return new Promise((resolve) => resolve(eval(test)));
+  return new Promise((resolve) => resolve(eval(transform(test))));
 }
 
 const Test = React.createClass({
@@ -25,7 +25,7 @@ const Test = React.createClass({
 
     this.setState(initialState, () => {
 
-      execute(transform(this.props.test))
+      execute(this.props.test)
         .then((result) => this.setState({ result }))
         .catch((error) => this.setState({ error }));
     });

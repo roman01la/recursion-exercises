@@ -1,6 +1,11 @@
 import React from 'react';
 import CM from 'codemirror';
 
+require('codemirror/addon/edit/closebrackets');
+require('codemirror/addon/edit/matchbrackets');
+require('codemirror/addon/selection/active-line');
+require('codemirror/mode/javascript/javascript');
+
 const Codemirror = React.createClass({
 
   componentDidMount() {
@@ -8,7 +13,11 @@ const Codemirror = React.createClass({
     this.cm = CM(this.refs.input, {
       value: this.props.value,
       mode: 'javascript',
-      lineNumbers: true
+      theme: 'neo',
+      lineNumbers: true,
+      autoCloseBrackets: true,
+      matchBrackets: true,
+      styleActiveLine: true
     });
 
     this.cm.on('change', (cm) => {

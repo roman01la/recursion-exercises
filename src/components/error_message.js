@@ -1,5 +1,5 @@
 import React from 'react';
 
-const ErrorMessage = ({ message }) => <span className='error-message'>{message}</span>;
+const ErrorMessage = ({ message }) => <div className='error-message'>{message}</div>;
 
 export default ErrorMessage;
