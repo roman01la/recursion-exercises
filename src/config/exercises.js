@@ -53,7 +53,7 @@ export default [
       title: 'Binary search',
       text: 'A binary search search algorithm finds the position of a target value within a sorted array. Here\'s the algorithm:\n<pre><code>Sorted array: L = [1, 3, 4, 6, 8, 9, 11]\nTarget value: X = 4\nCompare X to 6. X is smaller. Repeat with L = [1, 3, 4].\nCompare X to 3. X is larger. Repeat with L = [4].\nCompare X to 4. X equals 4, so the position is returned.</code></pre>'
     },
-    test: 'assert.equal(binarySearch(4, [0, 3, 4, 6, 7, 9, 11]), 4);',
+    test: 'assert.equal(binarySearch(4, [0, 3, 4, 6, 7, 9, 11]), 2);',
     id: 'bs'
   }
 ];
