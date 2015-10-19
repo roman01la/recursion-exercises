@@ -57,11 +57,29 @@ pre {
   font-size: 16px;
   background-color: #fff;
   color: #242424;
+}
+
+.test-btn {
   font-weight: bold;
 }
 
+.select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 5px 17px;
+  margin: 0 10px 0 0;
+  border-radius: 2px;
+  border: 1px solid #242424;
+  font-size: 14px;
+  background-color: #fff;
+  color: #242424;
+  height: 30px;
+  position: relative;
+  top: -1px;
+}
+
 .result {
-  margin: 0 0 0 20px;
+  margin: 20px 0 0;
 }
 
 .error-message {
@@ -87,7 +105,7 @@ pre {
 }
 
 .exercise-item {
-  margin: 20px 0 80px;
+  margin: 20px 0 40px;
   max-width: 600px;
 }
 

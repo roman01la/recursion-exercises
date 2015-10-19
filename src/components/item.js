@@ -29,8 +29,8 @@ const ExerciseItem = React.createClass({
 
       <section className='exercise-item'>
         <Description {...this.props.description} id={this.props.id} />
-        <Codemirror defaultValue={this.state.code} onChange={this._setCode} />
-        <Test test={this.state.code} id={this.props.id} />
+        <Codemirror defaultValue={this.state.code} value={this.state.code} onChange={this._setCode} />
+        <Test test={this.state.code} id={this.props.id} onAnswerSelect={this._setCode} />
       </section>
     );
   }

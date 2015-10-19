@@ -25,6 +25,13 @@ const Codemirror = React.createClass({
       this.props.onChange && this.props.onChange(cm.getValue());
     });
   },
+  componentWillReceiveProps(nextProps) {
+
+    if (nextProps.value !== this.cm.getValue()) {
+
+      this.cm.setValue(nextProps.value);
+    }
+  },
   componentWillUnmount() {
 
     Reflect.deleteProperty(this, 'cm');

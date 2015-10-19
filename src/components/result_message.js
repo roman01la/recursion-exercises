@@ -7,9 +7,9 @@ function getClassName(value) {
 
 const ResultMessage = ({ result }) => (
 
-  <span className={getClassName(result)}>
+  <div className={getClassName(result)}>
     {result === true ? 'Test passed!' : 'Test failed!'}
-  </span>
+  </div>
 );
 
 export default ResultMessage;
