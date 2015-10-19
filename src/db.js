@@ -14,5 +14,11 @@ export function createEntry(id, code) {
 
 export function onEntries(id, cb) {
 
-  answers.child(id).on('value', (data) => cb(null, data.val()), cb);
+  if (typeof id === 'function') {
+
+    answers.on('value', (data) => id(null, data.val()), id);
+  } else {
+
+    answers.child(id).on('value', (data) => cb(null, data.val()), cb);
+  }
 }

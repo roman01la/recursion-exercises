@@ -116,3 +116,8 @@ pre {
 .CodeMirror {
   height: 200px;
 }
+
+.rd3-basic-chart {
+  max-width: 600px;
+  text-align: center;
+}
