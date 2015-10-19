@@ -1,7 +1,7 @@
 import React from 'react';
 import ErrorMessage from './error_message';
 import ResultMessage from './result_message';
-import SelectAnswer from './select-answer';
+import SelectAnswer from './select_answer';
 import { execute } from '../worker';
 import * as db from '../db';
 
@@ -9,7 +9,7 @@ const initialState = {
   result: undefined,
   error: undefined,
   msg: 'Submit answer',
-  answers: null
+  answers: new Map()
 };
 
 export function getResult({ result, error }) {
@@ -26,10 +26,11 @@ const Test = React.createClass({
   },
   componentDidMount() {
 
-    db.getEntries(this.props.id)
-      .then((data) => { if (data === null) { throw Error('No answers!') } else { return data }; })
-      .then((answers) => this.setState({ answers }))
-      .catch((err) => this.setState({ answers: initialState.answers }));
+    db.onEntries(this.props.id, (err, answers) => {
+
+      if (err || answers === null) { return this.setState({ answers: initialState.answers }); }
+      else { this.setState({ answers: new Map(Object.entries(answers)) }) }
+    });
   },
   _executeTest() {
 
@@ -44,7 +45,10 @@ const Test = React.createClass({
 
     return () => {
 
-      db.createEntry(id, code);
+      if (![...this.state.answers.values()].includes(code)) {
+
+        db.createEntry(id, code);
+      }
 
       this.setState({ msg: 'Thanks!' },
         () => setTimeout(() => this.setState({ msg: initialState.msg }), 2000));
@@ -53,7 +57,7 @@ const Test = React.createClass({
   _onAnswerSelect(event) {
 
     this.props.onAnswerSelect &&
-      this.props.onAnswerSelect(this.state.answers[event.target.value]);
+      this.props.onAnswerSelect(this.state.answers.get(event.target.value));
   },
   render() {
 
@@ -61,8 +65,8 @@ const Test = React.createClass({
 
       <div className='test'>
         <button className='btn test-btn' onClick={this._executeTest}>Execute test</button>
-        {this.state.answers !== null ?
-          <SelectAnswer options={this.state.answers || []} defaultValue='default' id={this.props.id} onSelect={this._onAnswerSelect} /> :
+        {this.state.answers.size > 0 ?
+          <SelectAnswer options={this.state.answers} defaultValue='default' id={this.props.id} onSelect={this._onAnswerSelect} /> :
           null}
         {this.state.result !== undefined && this.state.result !== false ?
           <button className='btn' onClick={this._submitResult(this.props.id, this.props.test)}>{this.state.msg}</button> :

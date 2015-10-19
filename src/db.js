@@ -12,10 +12,7 @@ export function createEntry(id, code) {
   answers.child(id).push(code);
 }
 
-export function getEntries(id) {
+export function onEntries(id, cb) {
 
-  return new Promise((resolve, reject) => {
-
-    answers.child(id).once('value', (data) => resolve(data.val()), reject);
-  });
+  answers.child(id).on('value', (data) => cb(null, data.val()), cb);
 }
