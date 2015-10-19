@@ -27,6 +27,7 @@
     "browserify": "^11.2.0",
     "codemirror": "^5.7.0",
     "deep-equal": "^1.0.1",
+    "firebase": "^2.3.1",
     "livereactload": "^2.0.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
