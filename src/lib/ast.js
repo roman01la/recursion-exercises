@@ -1,16 +1,17 @@
 import esrecurse from 'esrecurse';
 import { parse } from 'acorn';
+import equal from './ast-equal';
 
 export function compareCode(answers, code) {
 
-  const codeAST = babel.transform(code, { stage: 0 }).ast.program.body;
+  const codeAST = getAST(code).body;
 
   return answers.some((answer) => {
 
     return equal(
       codeAST,
-      babel.transform(answer, { stage: 0 }).ast.program.body,
-      { ignore: ['start', 'end', 'column', 'line', 'loc', 'raw', 'rawValue'] })
+      getAST(answer).body,
+      { ignore: ['start', 'end', 'column', 'line', 'loc', 'raw', 'rawValue', 'name'] })
   });
 }
 

@@ -5,7 +5,7 @@ import SelectAnswer from './select_answer';
 import equal from '../lib/ast-equal';
 import { execute } from '../worker';
 import * as db from '../db';
-import { checkRecur } from '../lib/ast';
+import { checkRecur, compareCode } from '../lib/ast';
 
 const initialState = {
   result: undefined,
@@ -54,7 +54,7 @@ const Test = React.createClass({
 
     return () => {
 
-      if (![...this.state.answers.values()].includes(code)) {
+      if (!compareCode([...this.state.answers.values()], this.props.test)) {
 
         db.createEntry(id, code);
       }

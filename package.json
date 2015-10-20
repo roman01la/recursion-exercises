@@ -41,8 +41,5 @@
     "serve": "^1.4.0",
     "uglify-js": "^2.5.0",
     "watchify": "^3.4.0"
-  },
-  "dependencies": {
-    "babel-core": "^5.8.25"
   }
 }

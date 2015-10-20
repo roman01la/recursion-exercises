@@ -1,5 +1,3 @@
-import Errors from '../match_errors';
-
 function noop() {}
 
 export default function fuzzyStrings(options) {
@@ -38,7 +36,7 @@ export default function fuzzyStrings(options) {
 
       if (expectedValue !== actual.value) {
 
-        return new Errors.BindingError(actual.value, expected.value);
+        return false;
       }
     } else {
 

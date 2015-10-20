@@ -1,5 +1,3 @@
-import Errors from '../match_errors';
-
 function noop() {}
 
 export default function fuzzyIdentifiers(options) {
@@ -34,7 +32,7 @@ export default function fuzzyIdentifiers(options) {
       // match because a variable was re-bound.
       if (expected.name !== actual.name) {
 
-        return new Errors.BindingError(actual.name, expected.name);
+        return false;
       } else {
 
         return true;
