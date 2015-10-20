@@ -34,7 +34,13 @@ export function checkRecur(code, id) {
       if (node.id.name === id) {
 
         foundFn = true;
-        this.visitChildren(node);
+        return this.visitChildren(node);
+      }
+
+      if (foundFn) {
+
+        id = node.id.name;
+        return this.visitChildren(node);
       }
     },
     CallExpression(node) {
@@ -48,7 +54,7 @@ export function checkRecur(code, id) {
           isRecur = true;
         } else {
 
-          this.visitChildren(node);
+          return this.visitChildren(node);
         }
       }
     }
