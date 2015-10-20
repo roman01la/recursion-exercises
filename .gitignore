@@ -1,2 +1,3 @@
 node_modules
 src/config/db.js
+npm-debug.log

@@ -2,6 +2,7 @@ import React from 'react';
 import ErrorMessage from './error_message';
 import ResultMessage from './result_message';
 import SelectAnswer from './select_answer';
+import equal from '../lib/ast-equal';
 import { execute } from '../worker';
 import * as db from '../db';
 
@@ -14,9 +15,22 @@ const initialState = {
 
 export function getResult({ result, error }) {
 
-    return result !== undefined ? <ResultMessage result={result} /> :
-      (error !== undefined ? <ErrorMessage message={error} /> : null);
-  }
+  return result !== undefined ? <ResultMessage result={result} /> :
+    (error !== undefined ? <ErrorMessage message={error} /> : null);
+}
+
+export function compareCode(answers, code) {
+
+  const codeAST = babel.transform(code, { stage: 0 }).ast.program.body;
+
+  return answers.some((answer) => {
+
+    return equal(
+      codeAST,
+      babel.transform(answer, { stage: 0 }).ast.program.body,
+      { ignore: ['start', 'end', 'column', 'line', 'loc', 'raw', 'rawValue'] })
+  });
+}
 
 const Test = React.createClass({
 
@@ -45,7 +59,7 @@ const Test = React.createClass({
 
     return () => {
 
-      if (![...this.state.answers.values()].includes(code)) {
+      if (!compareCode([...this.state.answers.values()], code)) {
 
         db.createEntry(id, code);
       }
