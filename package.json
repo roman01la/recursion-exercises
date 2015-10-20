@@ -22,6 +22,7 @@
     ]
   },
   "devDependencies": {
+    "acorn": "^2.4.0",
     "babel": "^5.8.23",
     "babel-plugin-react-transform": "^1.1.1",
     "babel-runtime": "^5.8.25",
@@ -29,6 +30,7 @@
     "browserify": "^11.2.0",
     "codemirror": "^5.7.0",
     "deep-equal": "^1.0.1",
+    "esrecurse": "^3.1.1",
     "firebase": "^2.3.1",
     "livereactload": "^2.0.1",
     "mocha": "^2.3.3",

@@ -14,7 +14,7 @@ export default [
       text: 'Find the result of 8<sup>2</sup> recursively.'
     },
     test: 'assert.equal(exponent(2, 8), 64);',
-    id: 'exp'
+    id: 'exponent'
   },
   {
     description: {
@@ -22,7 +22,7 @@ export default [
       text: 'The factorial of a non-negative integer n is the product of all positive integers less than or equal to n. Find 5! recursively.'
     },
     test: 'assert.equal(factorial(5), 120);',
-    id: 'fact'
+    id: 'factorial'
   },
   {
     description: {
@@ -30,7 +30,7 @@ export default [
       text: 'The first two numbers in the Fibonacci sequence are 0 and 1 and each subsequent number is the sum of the previous two. Produce the sequence recursively.'
     },
     test: 'assert.equal(fibonacci(5), [0, 1, 1, 2, 3]);',
-    id: 'fib'
+    id: 'fibonacci'
   },
   {
     description: {
@@ -54,6 +54,6 @@ export default [
       text: 'A binary search search algorithm finds the position of a target value within a sorted array. Here\'s the algorithm:\n<pre><code>Sorted array: L = [1, 3, 4, 6, 8, 9, 11]\nTarget value: X = 4\nCompare X to 6. X is smaller. Repeat with L = [1, 3, 4].\nCompare X to 3. X is larger. Repeat with L = [4].\nCompare X to 4. X equals 4, so the position is returned.</code></pre>'
     },
     test: 'assert.equal(binarySearch(4, [0, 3, 4, 6, 7, 9, 11]), 2);',
-    id: 'bs'
+    id: 'binarySearch'
   }
 ];

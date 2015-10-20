@@ -1,6 +1,16 @@
 importScripts('browser.min.js');
 
-const assert = { equal: require('deep-equal') };
+import equal from 'deep-equal';
+
+let equalResult;
+
+const assert = {
+
+  equal(a, b) {
+
+    equalResult = equal(a, b);
+  }
+};
 
 onmessage = (event) => {
 
@@ -16,5 +26,16 @@ function transform(code) {
 
 function execute(code) {
 
-  return new Promise((resolve) => resolve(eval(transform(code))));
+  return new Promise((resolve, reject) => {
+
+    try {
+      eval(transform(code));
+      const result = equalResult;
+      equalResult = undefined;
+      resolve(result);
+    } catch (err) {
+      equalResult = undefined;
+      reject(err);
+    }
+  });
 }

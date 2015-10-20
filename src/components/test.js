@@ -5,6 +5,7 @@ import SelectAnswer from './select_answer';
 import equal from '../lib/ast-equal';
 import { execute } from '../worker';
 import * as db from '../db';
+import { checkRecur } from '../lib/ast';
 
 const initialState = {
   result: undefined,
@@ -17,19 +18,6 @@ export function getResult({ result, error }) {
 
   return result !== undefined ? <ResultMessage result={result} /> :
     (error !== undefined ? <ErrorMessage message={error} /> : null);
-}
-
-export function compareCode(answers, code) {
-
-  const codeAST = babel.transform(code, { stage: 0 }).ast.program.body;
-
-  return answers.some((answer) => {
-
-    return equal(
-      codeAST,
-      babel.transform(answer, { stage: 0 }).ast.program.body,
-      { ignore: ['start', 'end', 'column', 'line', 'loc', 'raw', 'rawValue'] })
-  });
 }
 
 const Test = React.createClass({
@@ -51,7 +39,14 @@ const Test = React.createClass({
     this.setState({...initialState, answers: this.state.answers}, () => {
 
       execute(this.props.test)
-        .then((result) => this.setState({ result }))
+        .then((result) => {
+
+          if (checkRecur(this.props.test, this.props.id)) {
+            this.setState({ result });
+          } else {
+            throw 'Not recursive!';
+          }
+        })
         .catch((error) => this.setState({ error }));
     });
   },
@@ -59,10 +54,10 @@ const Test = React.createClass({
 
     return () => {
 
-      if (!compareCode([...this.state.answers.values()], code)) {
-
-        db.createEntry(id, code);
-      }
+      // if (!compareCode([...this.state.answers.values()], code)) {
+      //
+      //   db.createEntry(id, code);
+      // }
 
       this.setState({ msg: 'Thanks!' },
         () => setTimeout(() => this.setState({ msg: initialState.msg }), 2000));
