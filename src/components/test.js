@@ -54,10 +54,10 @@ const Test = React.createClass({
 
     return () => {
 
-      // if (!compareCode([...this.state.answers.values()], code)) {
-      //
-      //   db.createEntry(id, code);
-      // }
+      if (![...this.state.answers.values()].includes(code)) {
+
+        db.createEntry(id, code);
+      }
 
       this.setState({ msg: 'Thanks!' },
         () => setTimeout(() => this.setState({ msg: initialState.msg }), 2000));
