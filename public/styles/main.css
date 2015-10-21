@@ -11,6 +11,11 @@ pre {
   border-radius: 2px;
 }
 
+ol li ul {
+  padding: 0 0 0 20px;
+  margin: 10px 0 20px;
+}
+
 .side-bar {
   padding: 10px 0 0 20px;
   display: flex;
@@ -24,6 +29,9 @@ pre {
 }
 .side-bar h1 {
   text-align: center;
+}
+.side-bar p {
+  margin: 5px 10px 5px 0;
 }
 
 .list-item {

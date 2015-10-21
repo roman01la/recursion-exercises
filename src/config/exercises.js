@@ -55,5 +55,23 @@ export default [
     },
     test: 'assert.equal(binarySearch(4, [0, 3, 4, 6, 7, 9, 11]), 2);',
     id: 'binarySearch'
+  },
+  {
+    description: {
+      title: 'Quick sort',
+      text: `<ol>
+  <li>Choose any element of the array to be the pivot.</li>
+  <li>Divide all other elements (except the pivot) into two partitions.
+    <ul>
+      <li>All elements less than the pivot must be in the first partition.</li>
+      <li>All elements greater than the pivot must be in the second partition.</li>
+    </ul>
+  </li>
+  <li>Use recursion to sort both partitions.</li>
+  <li>Join the first sorted partition, the pivot, and the second sorted partition.</li>
+</ol>`
+    },
+    test: 'assert.equal(quickSort([93, 24, 17, 77, 6]), [6, 17, 24, 77, 93]);',
+    id: 'quickSort'
   }
 ];

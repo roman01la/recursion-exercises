@@ -14,15 +14,17 @@ const App = ({ exercises }) => (
       <h1>Recursion exercises</h1>
       <ul className='list'>
         <li className='list-item'><a href='#sum'>Sum</a></li>
-        <li className='list-item'><a href='#exp'>Exponentiation</a></li>
-        <li className='list-item'><a href='#fact'>Factorial</a></li>
-        <li className='list-item'><a href='#fib'>Fibonacci sequence</a></li>
+        <li className='list-item'><a href='#exponent'>Exponentiation</a></li>
+        <li className='list-item'><a href='#factorial'>Factorial</a></li>
+        <li className='list-item'><a href='#fibonacci'>Fibonacci sequence</a></li>
         <li className='list-item'><a href='#range'>Range sequence</a></li>
         <li className='list-item'><a href='#gcd'>Greatest common divisor</a></li>
-        <li className='list-item'><a href='#bs'>Binary search</a></li>
+        <li className='list-item'><a href='#binarySearch'>Binary search</a></li>
+        <li className='list-item'><a href='#quickSort'>Quick sort</a></li>
       </ul>
-      <p><small>ES2015+ is supported in the editor with Babel. All of the changes are stored into localStorage.</small></p>
+      <p><small>ES2015 is supported in the editor via Babel. All of the changes are stored into localStorage, submited code is stored on Firebase.</small></p>
       <p><small>There's also Node version of the exercises for local testing. Clone the repo from <a href='https://github.com/roman01la/recursion-exercises'>GitHub</a>.</small></p>
+      <p><small>Found a bug? Report an <a href='https://github.com/roman01la/recursion-exercises/issues'>issue</a>.</small></p>
     </aside>
     <ExercisesList exercises={exercises} />
   </div>
