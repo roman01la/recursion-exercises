@@ -8,7 +8,7 @@
   "author": "Roman Liutikov",
   "license": "MIT",
   "devDependencies": {
-    "babel": "^5.8.23",
+    "babel": "^5.8.34",
     "deep-equal": "^1.0.1",
     "mocha": "^2.3.3"
   }
