@@ -28,22 +28,25 @@ export function checkRecur(code, id) {
   let foundFn = false;
   let isRecur = false;
 
+  function checkDeclaration(node) {
+
+    if (node.id.name === id) {
+
+      foundFn = true;
+      return this.visitChildren(node);
+    }
+
+    if (foundFn) {
+
+      id = node.id.name;
+      return this.visitChildren(node);
+    }
+  }
+
   esrecurse.visit(getAST(code), {
 
-    FunctionDeclaration(node) {
-
-      if (node.id.name === id) {
-
-        foundFn = true;
-        return this.visitChildren(node);
-      }
-
-      if (foundFn) {
-
-        id = node.id.name;
-        return this.visitChildren(node);
-      }
-    },
+    FunctionDeclaration: checkDeclaration,
+    VariableDeclarator: checkDeclaration,
     CallExpression(node) {
 
       if (foundFn) {
